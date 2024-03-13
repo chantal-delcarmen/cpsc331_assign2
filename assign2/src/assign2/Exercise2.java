@@ -35,6 +35,20 @@ public class Exercise2 {
 		// 2. -----------------------------------------------
 		System.out.println("Step-2:");
 		
+		System.out.print("Updated Queue - ");
+		reversedQueue.printQueue();
+
+		Queue updatedQueue = reversedQueue.queueDivision();
+		System.out.print("Updated Queue (after division) - ");
+		updatedQueue.printQueue();
+		
+		// 3. -----------------------------------------------
+		System.out.println("Step-3:");
+		
+		System.out.print("Updated Queue (after division) - ");
+		updatedQueue.printQueue();
+		
+		System.out.print("Updated Queue (after sorting) - ");
 
 	}
 	
