@@ -49,7 +49,19 @@ public class Exercise2 {
 		updatedQueue.printQueue();
 		
 		System.out.print("Updated Queue (after sorting) - ");
-
+		Queue sortedQueue = updatedQueue.queueSort();
+		sortedQueue.printQueue();
 	}
 	
 } // End class Exercise 2
+
+
+
+
+
+
+
+
+
+
+
