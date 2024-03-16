@@ -26,10 +26,7 @@ public class Queue {
 	public boolean isFull() {
 		return size == maxSize;
 	}
-	
-	public int size() {
-		return size;
-	}
+
 	
 	public void enqueue(int item) {
 		if(isFull()) {
@@ -44,9 +41,10 @@ public class Queue {
 	
 	public int dequeue() {
 		if(isEmpty()) {
-			System.out.println("Queue is empty! There is nothing to dequeue.");
-			return -1;
+			System.out.println("Queue is empty");
+			throw new NullPointerException();
 		}
+		
 		int item = queue[front];
 		front = (front + 1) % maxSize;
 		size--;
@@ -54,11 +52,12 @@ public class Queue {
 		
 	}
 	
-    public void printQueue() {    	
-        if (isEmpty()) {
-            System.out.println("Queue is empty");
-            return;
-        }
+    public void printQueue() {  	
+		if(isEmpty()) {
+			System.out.println("Queue is empty");
+			throw new NullPointerException();
+		}
+		
         
         // Create StringBuilder to append to
         StringBuilder sb = new StringBuilder();
@@ -115,56 +114,66 @@ public class Queue {
 		return updatedQueue;
     }
     
-//    public boolean contains(int value) {
-//    	int index = 0;
-//    	
-//    	for(int i = 0; i < size; i++) {
-//    		index = (front + i) % maxSize;
-//    		
-//    		if(queue[index] == value) {
-//    			return true;
-//    		}
-//    	}
-//		return false;    	
-//    }
-    
     public Queue queueSort() {
-    	if(isEmpty()) {
-    		System.out.println("Queue is empty");
-    	} 
+		if(isEmpty()) {
+			System.out.println("Queue is empty");
+			throw new NullPointerException();
+		}
+		 
     	
     	Queue sortedQueue = new Queue(maxSize);
-    	Set<Integer> uniqueValues = new HashSet<>();
+    	Set<Integer> uniqueSet = new HashSet<>();
     	int[] tempArray = new int[maxSize];
-    	int value = 0;
-    	int temp = 0;
-    	int current = dequeue();
+    	int value;
+    	int current;
     	
-    	for(int i = 0; i < size; i++) {
+    	for(int i : queue) {
     		value = dequeue();
     		tempArray[i] = value;
-    		uniqueValues.add(value);    		
+    		uniqueSet.add(value);    		
     	}
     	
-    	// Bubble sort
-    	for(int i = 0; i < (size - 1); i++) {
-    		for(int j = 0; j < (size - 1); j++) {
-    			if(tempArray[j] > tempArray[j+1]) {
-    				temp = tempArray[j];
-    				tempArray[j] = tempArray[j++];
-    				tempArray[j++] = temp;
-    			}
-    		}
-    	}
+	    for (int i : tempArray) {
+	        current = tempArray[i];	        
+	        int j = i - 1;
+	        
+	        while (j >= 0 && tempArray[j] > current) {
+	        	tempArray[j + 1] = tempArray[j];
+	            j--;
+	        }
+	        tempArray[j + 1] = current;
+	    }
+    	
     	for(int number : tempArray) {
-    		if(uniqueValues.contains(number)) {
+    		if(uniqueSet.contains(number)) {
     			sortedQueue.enqueue(number);
-    			uniqueValues.remove(number);
+    			uniqueSet.remove(number);
     		}
     	}
     	
 		return sortedQueue;    	
     }
+    
+	public Queue reverseQueue() {
+		if(isEmpty()) {
+			System.out.println("Queue is empty");
+			throw new NullPointerException();
+		}
+		
+		Stack stack = new Stack(size);
+		Queue revQueue = new Queue(size);
+		
+		for(int element : queue) {
+			element = dequeue();
+			stack.push(element);
+		}
+		
+		while(!stack.isEmpty()) {
+			revQueue.enqueue(stack.pop());
+		}
+		
+		return revQueue;
+	}
 	
 } // End class Queue
 

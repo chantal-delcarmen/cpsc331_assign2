@@ -42,19 +42,15 @@ public class Stack {
 		top--;
 		return temp;
 	}
+
 	
-	public Queue reverseQueue(Queue queue) {
-		Stack stack = new Stack(queue.size());
+	public Stack reverseStack() {
+		Queue tempQueue = new Queue(10);
 		
-		while(!queue.isEmpty()) {
-			stack.push(queue.dequeue());
-		}
-		
-		while(!stack.isEmpty()) {
-			queue.enqueue(stack.pop());
-		}
-		
-		return queue;
+//		for() {
+//			
+//		}
+		return null;
 	}
 	
     public void printStack() {
@@ -69,19 +65,4 @@ public class Stack {
         System.out.println();
     }
     
-//	public static void main(String[] args) {
-//		Stack stack = new Stack(9);
-//		stack.push(1);
-//		stack.push(2);
-//		stack.push(3);
-//		
-//		stack.printStack();
-//		
-//		stack.pop();
-//		stack.pop();
-//		stack.pop();
-//
-//		stack.printStack();
-//
-//	}
 }

@@ -9,7 +9,8 @@ public class Exercise2 {
 		
 		// 1. -----------------------------------------------
 		System.out.println("Step-1:");
-		Queue initialQueue = new Queue(9);
+		int capacity = 9;
+		Queue initialQueue = new Queue(capacity);
 
 		// Add numbers to the queue
 		System.out.print("Initial Queue - ");
@@ -27,9 +28,7 @@ public class Exercise2 {
 		
 		System.out.print("Updated Queue - ");
 		
-		Stack stack = new Stack();
-		Queue reversedQueue = stack.reverseQueue(initialQueue);
-		
+		Queue reversedQueue = initialQueue.reverseQueue();
 		reversedQueue.printQueue();
 		
 		// 2. -----------------------------------------------
