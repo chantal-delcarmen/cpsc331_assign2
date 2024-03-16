@@ -5,6 +5,7 @@ public class Stack {
 	private int[] stack;
 	private int top;
 	private int maxSize;
+	private int size;
 	
 	public Stack() {
 	}
@@ -29,6 +30,7 @@ public class Stack {
 			return;
 		}
 		top++;
+		size++;
 		stack[top] = item;
 	}
 	
@@ -40,29 +42,74 @@ public class Stack {
 		int temp = stack[top];
 		stack[top] = -1;
 		top--;
+		size--;
 		return temp;
 	}
 
 	
 	public Stack reverseStack() {
-		Queue tempQueue = new Queue(10);
+		if(isEmpty()) {
+			System.out.println("Stack is empty");
+			throw new NullPointerException();
+		}
+
+		Queue tempQueue = new Queue(maxSize);
+		Stack revStack = new Stack(maxSize);
 		
-//		for() {
-//			
-//		}
-		return null;
+		for(int element : stack) {
+			element = pop();
+			tempQueue.enqueue(element);
+		}
+		
+		while(!tempQueue.isEmpty()) {
+			revStack.push(tempQueue.dequeue());
+		}
+		
+		return revStack;
 	}
 	
-    public void printStack() {
+//    public void printStack() {
+//        if (isEmpty()) {
+//            System.out.println("Stack is empty.");
+//            return;
+//        }
+//        System.out.print("Stack: ");
+//        for (int i = top; i >= 0; i--) {
+//            System.out.print(stack[i] + " ");
+//        }
+//        System.out.println();
+//    }
+
+	public void printStack() {
         if (isEmpty()) {
             System.out.println("Stack is empty.");
             return;
+        }		
+        
+        // Create StringBuilder to append to
+        StringBuilder sb = new StringBuilder();
+        sb.append("[");
+        
+        int count = size;
+        int current = top;
+        
+        System.out.println("Count:" + count);
+        
+        while (count > 0) {
+            sb.append(stack[current]).append(",");
+            current = (current + 1) % maxSize;
+            count--;
+            System.out.println("Count:" + count);
+
         }
-        System.out.print("Stack: ");
-        for (int i = top; i >= 0; i--) {
-            System.out.print(stack[i] + " ");
-        }
-        System.out.println();
-    }
+        
+        // Remove the last ", " by reducing the length by 1
+        sb.setLength(sb.length() - 1);
+        
+        sb.append("]");
+
+        // Print the string
+        System.out.println(sb.toString());
+	}
     
 }

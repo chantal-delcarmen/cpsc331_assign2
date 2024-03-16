@@ -6,25 +6,26 @@ public class Exercise3 {
 
 	public static void main(String[] args) {
 		
-		Queue initialQueue = new Queue(9);
+		int capacity = 12;
+		Stack inputStack = new Stack(capacity);
 		
 		// 1. -----------------------------------------------
-		System.out.println("\n-----------------------------------------------");
-		System.out.println("Step-1:\n");
-		
-		// Add numbers to the queue
-		System.out.print("Initial Queue - [");
-		initialQueue.enqueue(3);
-		initialQueue.enqueue(15);
-		initialQueue.enqueue(0);
-		initialQueue.enqueue(18);
-		initialQueue.enqueue(4);
-		initialQueue.enqueue(10);
-		initialQueue.enqueue(2);
-		initialQueue.enqueue(5);
-		initialQueue.enqueue(25);
-//		initialQueue.printChar(initialQueue);
-		System.out.print("]\n");
+
+		// Add numbers to the stack
+		System.out.print("Input Stack: ");
+		inputStack.push(2);
+		inputStack.push(9);
+		inputStack.push(3);
+		inputStack.push(1);
+		inputStack.push(8);
+		inputStack.push(9);
+		inputStack.push(0);
+		inputStack.push(7);
+		inputStack.push(8);
+		inputStack.push(4);
+		inputStack.push(5);
+		inputStack.push(3);		
+		inputStack.printStack();
 
 	}
 	
