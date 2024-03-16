@@ -9,8 +9,8 @@ public class Exercise2 {
 		
 		// 1. -----------------------------------------------
 		System.out.println("Step-1:");
-		int capacity = 9;
-		Queue initialQueue = new Queue(capacity);
+		int maxSize = 9;
+		Queue initialQueue = new Queue(maxSize);
 
 		// Add numbers to the queue
 		System.out.print("Initial Queue - ");

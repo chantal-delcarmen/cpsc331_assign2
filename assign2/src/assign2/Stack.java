@@ -1,5 +1,7 @@
 package assign2;
 
+import java.util.HashSet;
+import java.util.Set;
 
 public class Stack {
 	private int[] stack;
@@ -61,8 +63,11 @@ public class Stack {
 			tempQueue.enqueue(element);
 		}
 		
+		int value;
+		
 		while(!tempQueue.isEmpty()) {
-			revStack.push(tempQueue.dequeue());
+			value = tempQueue.dequeue();
+			revStack.push(value);
 		}
 		
 		return revStack;
@@ -82,7 +87,7 @@ public class Stack {
         int current = getBottomIndex();
         
         for (int i = 0; i < size; i++) {
-            sb.append(stack[current]).append(",");
+            sb.append(stack[current]).append("-");
             current = (current + 1) % maxSize;
             count--;
         }
@@ -98,5 +103,34 @@ public class Stack {
 	private int getBottomIndex() {
 		return top - size + 1;
 	}
+	
+	public Queue stackIterator() {
+		Set<Integer> uniqueSet = new HashSet<>();
+		Queue uniqueQueue = new Queue(maxSize);
+		
+        int count = size;
+		int bottom = getBottomIndex();
+        for (int i = bottom; i < size; i++) {
+        	int value = stack[i];
+        	
+        	if(!uniqueSet.contains(value)) {
+        		uniqueSet.add(value);
+        		uniqueQueue.enqueue(value);
+        	}
+        }
+        return uniqueQueue;
+	}
     
-}
+} // End class Stack
+
+
+
+
+
+
+
+
+
+
+
+

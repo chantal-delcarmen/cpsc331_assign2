@@ -81,6 +81,35 @@ public class Queue {
         System.out.println(sb.toString());
     }
     
+    public void printQueueDashed() {  	
+		if(isEmpty()) {
+			System.out.println("Queue is empty");
+			throw new NullPointerException();
+		}
+		
+        
+        // Create StringBuilder to append to
+        StringBuilder sb = new StringBuilder();
+        sb.append("[");
+        
+        int count = size;
+        int current = front;
+        
+        while (count > 0) {
+            sb.append(queue[current]).append("-");
+            current = (current + 1) % maxSize;
+            count--;
+        }
+        
+        // Remove the last ", " by reducing the length by 1
+        sb.setLength(sb.length() - 1);
+        
+        sb.append("]");
+
+        // Print the string
+        System.out.println(sb.toString());
+    }
+    
     public Queue queueDivision() {
         if (isEmpty()) {
             System.out.println("Queue is empty");
