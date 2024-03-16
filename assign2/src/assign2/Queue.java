@@ -1,5 +1,7 @@
 package assign2;
 
+//** Code for queue array implementation copied and modified from CPSC 331 slides **
+
 public class Queue<T> {
 	private T[] queue;
 	private int front;

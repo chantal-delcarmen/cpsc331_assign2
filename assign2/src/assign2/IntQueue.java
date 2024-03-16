@@ -1,5 +1,7 @@
 package assign2;
 
+//** Code copied and modified from CPSC 331 slides **
+
 import java.util.HashSet;
 import java.util.Set;
 

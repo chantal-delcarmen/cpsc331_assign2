@@ -1,4 +1,4 @@
-package assign2;
+package assign2.ex4;
 
 public class Tuple {
 	private String name = "";

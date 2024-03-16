@@ -1,6 +1,7 @@
-package assign2;
+package assign2.ex2;
 
-// ** Code for queue array implementation copied and modified from CPSC 331 slides **
+import assign2.IntQueue;
+
 
 public class Exercise2 {
 
