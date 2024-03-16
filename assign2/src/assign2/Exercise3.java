@@ -7,7 +7,7 @@ public class Exercise3 {
 	public static void main(String[] args) {
 		
 		int maxSize = 12;
-		Stack inputStack = new Stack(maxSize);
+		IntStack inputStack = new IntStack(maxSize);
 		
 		// 1. -----------------------------------------------
 
@@ -28,11 +28,11 @@ public class Exercise3 {
 		inputStack.printStack();
 		
 		System.out.print("Output Reversed Stack: ");
-		Stack outputRevStack = inputStack.reverseStack();
+		IntStack outputRevStack = inputStack.reverseStack();
 		outputRevStack.printStack();
 		
 		System.out.print("Output Queue with unique values: ");
-		Queue outputQueue = outputRevStack.stackIterator();
+		IntQueue outputQueue = outputRevStack.stackIterator();
 		outputQueue.printQueueDashed();
 	}
 	

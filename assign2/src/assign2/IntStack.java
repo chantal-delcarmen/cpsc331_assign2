@@ -3,22 +3,19 @@ package assign2;
 import java.util.HashSet;
 import java.util.Set;
 
-public class Stack<T> {
-	private T[] stack;
+public class IntStack {
+	private int[] stack;
 	private int top;
 	private int maxSize;
 	private int size;
 	
-	public Stack() {
+	public IntStack() {
 	}
 	
-	@SuppressWarnings("unchecked")
-	public Stack(int maxSize) {
+	public IntStack(int maxSize) {
 		top = -1;
 		this.maxSize = maxSize;
-		
-		// Cast object to an array of <T> to create the stack
-		stack = (T[]) new Object[maxSize];		
+		stack = new int[maxSize];		
 	}
 	
 	public boolean isEmpty() {
@@ -29,7 +26,7 @@ public class Stack<T> {
 		return top == (maxSize - 1);
 	}
 	
-	public void push(T item) {
+	public void push(int item) {
 		if(isFull()) {
 			System.out.println("Stack is full");
 			return;
@@ -39,33 +36,34 @@ public class Stack<T> {
 		stack[top] = item;
 	}
 	
-	public T pop() {
+	public int pop() {
 		if(isEmpty()) {
 			System.out.println("Cannot pop from an empty stack");
-			throw new NullPointerException();
+			return -1;
 		}
-		T item = stack[top];
+		int temp = stack[top];
+		stack[top] = -1;
 		top--;
 		size--;
-		return item;
+		return temp;
 	}
 
 	
-	public Stack<T> reverseStack() {
+	public IntStack reverseStack() {
 		if(isEmpty()) {
 			System.out.println("Stack is empty");
 			throw new NullPointerException();
 		}
 
-		Queue tempQueue = new Queue(maxSize);
-		Stack<T> revStack = new Stack<T>(maxSize);
+		IntQueue tempQueue = new IntQueue(maxSize);
+		IntStack revStack = new IntStack(maxSize);
 		
-		for(T element : stack) {
+		for(int element : stack) {
 			element = pop();
 			tempQueue.enqueue(element);
 		}
 		
-		T value;
+		int value;
 		
 		while(!tempQueue.isEmpty()) {
 			value = tempQueue.dequeue();
@@ -106,14 +104,14 @@ public class Stack<T> {
 		return top - size + 1;
 	}
 	
-	public Queue stackIterator() {
-		Set<T> uniqueSet = new HashSet<T>();
-		Queue uniqueQueue = new Queue(maxSize);
+	public IntQueue stackIterator() {
+		Set<Integer> uniqueSet = new HashSet<>();
+		IntQueue uniqueQueue = new IntQueue(maxSize);
 		
         int count = size;
 		int bottom = getBottomIndex();
         for (int i = bottom; i < size; i++) {
-        	T value = stack[i];
+        	int value = stack[i];
         	
         	if(!uniqueSet.contains(value)) {
         		uniqueSet.add(value);
@@ -124,5 +122,15 @@ public class Stack<T> {
 	}
     
 } // End class Stack
+
+
+
+
+
+
+
+
+
+
 
 

@@ -10,7 +10,7 @@ public class Exercise2 {
 		// 1. -----------------------------------------------
 		System.out.println("Step-1:");
 		int maxSize = 9;
-		Queue initialQueue = new Queue(maxSize);
+		IntQueue initialQueue = new IntQueue(maxSize);
 
 		// Add numbers to the queue
 		System.out.print("Initial Queue - ");
@@ -28,7 +28,7 @@ public class Exercise2 {
 		
 		System.out.print("Updated Queue - ");
 		
-		Queue reversedQueue = initialQueue.reverseQueue();
+		IntQueue reversedQueue = initialQueue.reverseQueue();
 		reversedQueue.printQueue();
 		
 		// 2. -----------------------------------------------
@@ -37,7 +37,7 @@ public class Exercise2 {
 		System.out.print("Updated Queue - ");
 		reversedQueue.printQueue();
 
-		Queue updatedQueue = reversedQueue.queueDivision();
+		IntQueue updatedQueue = reversedQueue.queueDivision();
 		System.out.print("Updated Queue (after division) - ");
 		updatedQueue.printQueue();
 		
@@ -48,7 +48,7 @@ public class Exercise2 {
 		updatedQueue.printQueue();
 		
 		System.out.print("Updated Queue (after sorting) - ");
-		Queue sortedQueue = updatedQueue.queueSort();
+		IntQueue sortedQueue = updatedQueue.queueSort();
 		sortedQueue.printQueue();
 	}
 	
