@@ -67,49 +67,36 @@ public class Stack {
 		
 		return revStack;
 	}
-	
-//    public void printStack() {
-//        if (isEmpty()) {
-//            System.out.println("Stack is empty.");
-//            return;
-//        }
-//        System.out.print("Stack: ");
-//        for (int i = top; i >= 0; i--) {
-//            System.out.print(stack[i] + " ");
-//        }
-//        System.out.println();
-//    }
 
 	public void printStack() {
         if (isEmpty()) {
             System.out.println("Stack is empty.");
             return;
         }		
-        
+
         // Create StringBuilder to append to
         StringBuilder sb = new StringBuilder();
         sb.append("[");
         
         int count = size;
-        int current = top;
+        int current = getBottomIndex();
         
-        System.out.println("Count:" + count);
-        
-        while (count > 0) {
+        for (int i = 0; i < size; i++) {
             sb.append(stack[current]).append(",");
             current = (current + 1) % maxSize;
             count--;
-            System.out.println("Count:" + count);
-
         }
         
         // Remove the last ", " by reducing the length by 1
         sb.setLength(sb.length() - 1);
-        
         sb.append("]");
 
         // Print the string
         System.out.println(sb.toString());
+	}
+
+	private int getBottomIndex() {
+		return top - size + 1;
 	}
     
 }
